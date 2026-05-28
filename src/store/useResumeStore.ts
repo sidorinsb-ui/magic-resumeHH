@@ -143,7 +143,7 @@ const normalizeImportedResume = (
   };
 };
 
-// ?????????
+// 同步简历到文件系统
 const syncResumeToFile = async (
   resumeData: ResumeData,
   prevResume?: ResumeData
@@ -185,7 +185,7 @@ const syncResumeToFile = async (
   }
 };
 
-// ????:??????,1.5???????????????
+// 防抖同步：合并高频写入，1.5秒内多次编辑只触发一次文件写入
 let syncTimer: ReturnType<typeof setTimeout> | null = null;
 const debouncedSyncToFile = (
   resumeData: ResumeData,
@@ -242,7 +242,7 @@ export const useResumeStore = create(
           createdAt: new Date().toISOString(),
           updatedAt: new Date().toISOString(),
           templateId: template?.id,
-          title: `${locale === "en" ? "New Resume" : "????"} ${id.slice(
+          title: `${locale === "en" ? "New Resume" : "新建简历"} ${id.slice(
             0,
             6
           )}`,
@@ -288,7 +288,7 @@ export const useResumeStore = create(
         });
       },
 
-      // ?????,????resumes
+      // 从文件更新，直接更新resumes
       updateResumeFromFile: (resume, sourceModifiedAt) => {
         const localResume = get().resumes[resume.id];
         if (!shouldImportResumeFromFile(resume, localResume, sourceModifiedAt)) {
@@ -351,7 +351,7 @@ export const useResumeStore = create(
         const newId = generateUUID();
         const originalResume = get().resumes[resumeId];
 
-        // ????????
+        // 获取当前语言环境
         const locale =
           typeof document !== "undefined"
             ? document.cookie
@@ -364,7 +364,7 @@ export const useResumeStore = create(
           ...originalResume,
           id: newId,
           title: `${originalResume.title} (${
-            locale === "en" ? "Copy" : "??"
+            locale === "en" ? "Copy" : "复制"
           })`,
           createdAt: new Date().toISOString(),
           updatedAt: new Date().toISOString(),
@@ -410,7 +410,7 @@ export const useResumeStore = create(
           };
         });
 
-        // ? set() ???????
+        // 在 set() 外部处理副作用
         const updatedResume = get().activeResume;
         if (updatedResume) {
           debouncedSyncToFile(updatedResume, prevResume || undefined);
@@ -594,7 +594,7 @@ export const useResumeStore = create(
             [sectionId]: [
               {
                 id: generateUUID(),
-                title: "?????",
+                title: "未命名模块",
                 subtitle: "",
                 dateRange: "",
                 description: "",
@@ -637,7 +637,7 @@ export const useResumeStore = create(
               ...(currentResume.customData[sectionId] || []),
               {
                 id: generateUUID(),
-                title: "?????",
+                title: "未命名模块",
                 subtitle: "",
                 dateRange: "",
                 description: "",
