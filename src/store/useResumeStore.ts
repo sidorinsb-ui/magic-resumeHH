@@ -242,10 +242,13 @@ export const useResumeStore = create(
           createdAt: new Date().toISOString(),
           updatedAt: new Date().toISOString(),
           templateId: template?.id,
-          title: `${locale === "en" ? "New Resume" : "新建简历"} ${id.slice(
-            0,
-            6
-          )}`,
+          title: `${
+            locale === "en"
+              ? "New Resume"
+              : locale === "ru"
+                ? "Новое резюме"
+                : "新建简历"
+          } ${id.slice(0, 6)}`,
         };
 
         set((state) => ({
@@ -364,7 +367,7 @@ export const useResumeStore = create(
           ...originalResume,
           id: newId,
           title: `${originalResume.title} (${
-            locale === "en" ? "Copy" : "复制"
+            locale === "en" ? "Copy" : locale === "ru" ? "Копия" : "复制"
           })`,
           createdAt: new Date().toISOString(),
           updatedAt: new Date().toISOString(),
@@ -594,7 +597,7 @@ export const useResumeStore = create(
             [sectionId]: [
               {
                 id: generateUUID(),
-                title: "未命名模块",
+                title: "Блок без названия",
                 subtitle: "",
                 dateRange: "",
                 description: "",
@@ -637,7 +640,7 @@ export const useResumeStore = create(
               ...(currentResume.customData[sectionId] || []),
               {
                 id: generateUUID(),
-                title: "未命名模块",
+                title: "Блок без названия",
                 subtitle: "",
                 dateRange: "",
                 description: "",

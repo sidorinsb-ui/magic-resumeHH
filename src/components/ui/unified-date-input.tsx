@@ -54,7 +54,7 @@ export function UnifiedDateInput({
 
   return (
     <div className={className}>
-      <HeroUIProvider locale="ja-JP">
+      <HeroUIProvider locale="ru-RU">
         <DateInput
           value={isPresent ? null : selectedDate}
           onChange={handleDateChange}

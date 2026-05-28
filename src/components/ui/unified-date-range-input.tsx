@@ -104,7 +104,7 @@ export function UnifiedDateRangeInput({
 
   return (
     <div className={cn("w-full", className)}>
-      <HeroUIProvider locale="ja-JP">
+      <HeroUIProvider locale="ru-RU">
         <div className="flex items-center gap-2">
           <div className="flex-1">
             <DateInput

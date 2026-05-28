@@ -31,9 +31,9 @@ import { DEFAULT_TEMPLATES } from "@/config";
 import { getFontOptions, normalizeFontFamily } from "@/utils/fonts";
 
 const lineHeightOptions = [
-  { value: "normal", label: "默认" },
-  { value: "relaxed", label: "适中" },
-  { value: "loose", label: "宽松" },
+  { value: "normal", label: "По умолчанию" },
+  { value: "relaxed", label: "Свободный" },
+  { value: "loose", label: "Широкий" },
 ];
 
 function SettingCard({
@@ -491,7 +491,7 @@ export function SidePanel() {
                           }
                         }}
                       >
-                        <span className="sr-only">增加</span>
+                        <span className="sr-only">Увеличить</span>
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           width="12"
@@ -518,7 +518,7 @@ export function SidePanel() {
                           }
                         }}
                       >
-                        <span className="sr-only">减少</span>
+                        <span className="sr-only">Уменьшить</span>
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           width="12"
@@ -587,7 +587,7 @@ export function SidePanel() {
                           }
                         }}
                       >
-                        <span className="sr-only">增加</span>
+                        <span className="sr-only">Увеличить</span>
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           width="12"
@@ -615,7 +615,7 @@ export function SidePanel() {
                           }
                         }}
                       >
-                        <span className="sr-only">减少</span>
+                        <span className="sr-only">Уменьшить</span>
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           width="12"
@@ -684,7 +684,7 @@ export function SidePanel() {
                           }
                         }}
                       >
-                        <span className="sr-only">增加</span>
+                        <span className="sr-only">Увеличить</span>
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           width="12"
@@ -712,7 +712,7 @@ export function SidePanel() {
                           }
                         }}
                       >
-                        <span className="sr-only">减少</span>
+                        <span className="sr-only">Уменьшить</span>
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           width="12"

@@ -69,7 +69,7 @@ export function MobileWorkbench() {
                       )}
                     >
                       <span className="mr-1.5">👤</span>
-                      基本信息
+                      Личные данные
                     </button>
                     
                     {/* 其他模块 */}
@@ -139,9 +139,9 @@ export function MobileWorkbench() {
 
       {/* 底部导航栏 */}
       <div className="h-16 border-t bg-background flex items-center justify-around relative shadow-[0_-1px_3px_rgba(0,0,0,0.05)] z-50">
-        {renderNavItem("content", <FileText className="w-5 h-5" />, "内容")}
-        {renderNavItem("style", <Palette className="w-5 h-5" />, "样式")}
-        {renderNavItem("preview", <Eye className="w-5 h-5" />, "预览")}
+        {renderNavItem("content", <FileText className="w-5 h-5" />, "Содержимое")}
+        {renderNavItem("style", <Palette className="w-5 h-5" />, "Стиль")}
+        {renderNavItem("preview", <Eye className="w-5 h-5" />, "Предпросмотр")}
       </div>
     </div>
   );

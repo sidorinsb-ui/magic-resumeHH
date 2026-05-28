@@ -104,7 +104,7 @@ export function EditPanel() {
                       <Pencil size={16} className="text-primary" />
                     </TooltipTrigger>
                     <TooltipContent>
-                      <p>点击文字部分即可聚焦编辑</p>
+                      <p>Нажмите на текст, чтобы начать редактирование</p>
                     </TooltipContent>
                   </Tooltip>
                 </TooltipProvider>

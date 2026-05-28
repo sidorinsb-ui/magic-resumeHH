@@ -21,7 +21,7 @@ const SelfEvaluationPanel = () => {
                 value={selfEvaluationContent}
                 onChange={handleChange}
                 type="editor"
-                placeholder="描述你的自我评价..."
+                placeholder="Опишите себя..."
             />
         </div>
     );
