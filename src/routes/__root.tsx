@@ -12,9 +12,12 @@ import { NextIntlClientProvider } from "@/i18n/compat/client";
 import { useEffect } from "react";
 import zhMessages from "@/i18n/locales/zh.json";
 import enMessages from "@/i18n/locales/en.json";
+import ruMessages from "@/i18n/locales/ru.json";
 import { Providers } from "@/app/providers";
 import { Toaster } from "@/components/ui/sonner";
 import { getPreferredLocale } from "@/i18n/runtime";
+
+const MESSAGES = { zh: zhMessages, en: enMessages, ru: ruMessages } as const;
 
 export const Route = createRootRoute({
   head: () => ({
@@ -50,7 +53,7 @@ function RootComponent() {
     select: (location) => location.pathname
   });
   const locale = getPreferredLocale(pathname);
-  const messages = locale === "en" ? enMessages : zhMessages;
+  const messages = MESSAGES[locale] ?? zhMessages;
 
   useEffect(() => {
     document.cookie = `NEXT_LOCALE=${locale}; path=/; max-age=31536000`;
@@ -67,7 +70,7 @@ function RootComponent() {
         <NextIntlClientProvider
           locale={locale}
           messages={messages}
-          timeZone="Asia/Shanghai"
+          timeZone="Europe/Moscow"
         >
           <Providers>
             <Outlet />
@@ -83,7 +86,7 @@ function RootComponent() {
 function RootNotFound() {
   return (
     <main className="min-h-screen flex items-center justify-center">
-      <p className="text-muted-foreground">页面不存在</p>
+      <p className="text-muted-foreground">Страница не найдена</p>
     </main>
   );
 }
