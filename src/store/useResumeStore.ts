@@ -16,8 +16,10 @@ import { DEFAULT_TEMPLATES } from "@/config";
 import {
   initialResumeState,
   initialResumeStateEn,
+  initialResumeStateRu,
   blankResumeState,
   blankResumeStateEn,
+  blankResumeStateRu,
 } from "@/config/initialResumeData";
 import { generateUUID } from "@/utils/uuid";
 interface ResumeStore {
@@ -141,7 +143,7 @@ const normalizeImportedResume = (
   };
 };
 
-// 同步简历到文件系统
+// ?????????
 const syncResumeToFile = async (
   resumeData: ResumeData,
   prevResume?: ResumeData
@@ -183,7 +185,7 @@ const syncResumeToFile = async (
   }
 };
 
-// 防抖同步：合并高频写入，1.5秒内多次编辑只触发一次文件写入
+// ????:??????,1.5???????????????
 let syncTimer: ReturnType<typeof setTimeout> | null = null;
 const debouncedSyncToFile = (
   resumeData: ResumeData,
@@ -215,10 +217,18 @@ export const useResumeStore = create(
         let initialResumeData: any;
         if (isBlank) {
           initialResumeData =
-            locale === "en" ? blankResumeStateEn : blankResumeState;
+            locale === "en"
+              ? blankResumeStateEn
+              : locale === "ru"
+                ? blankResumeStateRu
+                : blankResumeState;
         } else {
           initialResumeData =
-            locale === "en" ? initialResumeStateEn : initialResumeState;
+            locale === "en"
+              ? initialResumeStateEn
+              : locale === "ru"
+                ? initialResumeStateRu
+                : initialResumeState;
         }
 
         const id = generateUUID();
@@ -232,7 +242,7 @@ export const useResumeStore = create(
           createdAt: new Date().toISOString(),
           updatedAt: new Date().toISOString(),
           templateId: template?.id,
-          title: `${locale === "en" ? "New Resume" : "新建简历"} ${id.slice(
+          title: `${locale === "en" ? "New Resume" : "????"} ${id.slice(
             0,
             6
           )}`,
@@ -278,7 +288,7 @@ export const useResumeStore = create(
         });
       },
 
-      // 从文件更新，直接更新resumes
+      // ?????,????resumes
       updateResumeFromFile: (resume, sourceModifiedAt) => {
         const localResume = get().resumes[resume.id];
         if (!shouldImportResumeFromFile(resume, localResume, sourceModifiedAt)) {
@@ -341,7 +351,7 @@ export const useResumeStore = create(
         const newId = generateUUID();
         const originalResume = get().resumes[resumeId];
 
-        // 获取当前语言环境
+        // ????????
         const locale =
           typeof document !== "undefined"
             ? document.cookie
@@ -354,7 +364,7 @@ export const useResumeStore = create(
           ...originalResume,
           id: newId,
           title: `${originalResume.title} (${
-            locale === "en" ? "Copy" : "复制"
+            locale === "en" ? "Copy" : "??"
           })`,
           createdAt: new Date().toISOString(),
           updatedAt: new Date().toISOString(),
@@ -400,7 +410,7 @@ export const useResumeStore = create(
           };
         });
 
-        // 在 set() 外部处理副作用
+        // ? set() ???????
         const updatedResume = get().activeResume;
         if (updatedResume) {
           debouncedSyncToFile(updatedResume, prevResume || undefined);
@@ -584,7 +594,7 @@ export const useResumeStore = create(
             [sectionId]: [
               {
                 id: generateUUID(),
-                title: "未命名模块",
+                title: "?????",
                 subtitle: "",
                 dateRange: "",
                 description: "",
@@ -627,7 +637,7 @@ export const useResumeStore = create(
               ...(currentResume.customData[sectionId] || []),
               {
                 id: generateUUID(),
-                title: "未命名模块",
+                title: "?????",
                 subtitle: "",
                 dateRange: "",
                 description: "",
