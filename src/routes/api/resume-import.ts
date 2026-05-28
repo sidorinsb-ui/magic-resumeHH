@@ -60,7 +60,12 @@ export const Route = createFileRoute("/api/resume-import")({
             );
           }
 
-          const language = locale === "en" ? "English" : "Chinese";
+          const language =
+            locale === "en"
+              ? "English"
+              : locale === "ru"
+                ? "Russian"
+                : "Chinese";
           const geminiModel = model || "gemini-flash-latest";
           const imageParts = Array.isArray(images)
             ? images.map((image) => {
