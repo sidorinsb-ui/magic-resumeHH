@@ -229,7 +229,7 @@ export const ResumeWorkbench = () => {
         }
 
         const nameWithoutExt = file.name.replace(/\.[^.]+$/, "").trim();
-        const resume = createResumeFromAIResult(aiResume, nameWithoutExt);
+        const resume = createResumeFromAIResult(aiResume, nameWithoutExt, locale);
         const resumeId = addResume(resume);
         setActiveResume(resumeId);
         setIsImportDialogOpen(false);
