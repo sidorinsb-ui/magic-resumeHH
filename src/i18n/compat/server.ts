@@ -1,13 +1,16 @@
+import { cookies } from "next/headers";
 import { defaultLocale, Locale } from "@/i18n/config";
 import zhMessages from "@/i18n/locales/zh.json";
 import enMessages from "@/i18n/locales/en.json";
+import ruMessages from "@/i18n/locales/ru.json";
 import { createTranslator } from "./utils";
 
 type Messages = Record<string, unknown>;
 
 const MESSAGES: Record<Locale, Messages> = {
   zh: zhMessages as Messages,
-  en: enMessages as Messages
+  en: enMessages as Messages,
+  ru: ruMessages as Messages
 };
 
 let requestLocale: Locale = defaultLocale;
@@ -40,4 +43,3 @@ export function getRequestConfig<TArgs, TResult>(
 ) {
   return callback;
 }
-
